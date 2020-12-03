@@ -1,0 +1,31 @@
+<div class="container py-3">
+  <form [formGroup]="form">
+    <div class="form-group">
+      <input formControlName="name" class="form-control">
+      <span *ngIf="(form.get('name').touched || form.get('name').dirty) && form.get('name').hasError('required')" >Este campo es requerido</span>
+    </div>
+    <div class="form-group">
+      <input formControlName="lastName" class="form-control">
+      <span *ngIf="form.get('lastName').hasError('required')" >Este campo es requerido</span>
+      <span *ngIf="form.get('lastName').hasError('minlength')" >Este campo requiere mas digitos</span>
+    </div>
+    <div class="form-group">
+      <input formControlName="age" class="form-control">
+      <span *ngIf="form.get('age').hasError('range')" >{{ form.get('age').getError('range') }}</span>
+    </div>
+    <div class="form-group">
+      <select formControlName="gender" class="form-control" >
+        <option>Seleccionar genero</option>
+        <option>Masculino</option>
+        <option>Femenino</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <app-input-date formControlName="date"></app-input-date>
+      <span *ngIf="form.get('date').hasError('minDate')" >Ingrese una fecha mayor</span>
+
+    </div>
+  </form>
+  <div>Valido: {{ form.valid }}</div>
+  <pre>{{ form.value | json }}</pre>
+</div>

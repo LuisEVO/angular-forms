@@ -1,0 +1,27 @@
+<div class="d-flex">
+  <input
+    class="form-control"
+    placeholder="DD"
+    [(ngModel)]="day"
+    (ngModelChange)="updateValue()"
+    type="number"
+    [disabled]="isDisabled"
+  />
+  <input
+    class="form-control"
+    placeholder="MM"
+    [(ngModel)]="month"
+    (ngModelChange)="updateValue()"
+    type="number"
+    [disabled]="isDisabled"
+  />
+  <input
+    class="form-control"
+    placeholder="YYYY"
+    [(ngModel)]="year"
+    (ngModelChange)="updateValue()"
+    type="number"
+    [disabled]="isDisabled"
+  />
+</div>
+<span *ngIf="control.hasError('validDate')" >La fecha no es valida</span>
